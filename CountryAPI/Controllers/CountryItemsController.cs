@@ -45,9 +45,9 @@ namespace CountryAPI.Controllers
         // PUT: api/CountryItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCountryItem(long id, CountryItem countryItem.F)
+        public async Task<IActionResult> PutCountryItem(long id, CountryItem countryItem)
         {
-            if (id != countryItem.Id)
+            if (id != countryItem.ID)
             {
                 return BadRequest();
             }
@@ -81,7 +81,7 @@ namespace CountryAPI.Controllers
             _context.CountryItems.Add(countryItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCountryItem", new { id = countryItem.Id }, countryItem.LastName);
+            return CreatedAtAction("GetCountryItem", new { id = countryItem.ID }, countryItem.CapitalCity);
         }
 
         // DELETE: api/CountryItems/5
@@ -102,7 +102,7 @@ namespace CountryAPI.Controllers
 
         private bool CountryItemExists(long id)
         {
-            return _context.CountryItems.Any(e => e.Id == id);
+            return _context.CountryItems.Any(e => e.ID == id);
         }
     }
 }

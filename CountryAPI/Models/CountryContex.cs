@@ -6,7 +6,8 @@ namespace CountryAPI.Models
     {
         public CountryContex(DbContextOptions<CountryContex> options)
             : base(options) 
-        { 
+        {
+            Database.EnsureCreated();
         }
 
         public DbSet<CountryItem> CountryItems { get; set; } = null!;
